@@ -38,7 +38,7 @@ ram.runtime = "50M"
     # Do NOT handle system_user, deb package will
     # [resources.system_user]
 
-    [resources.install_dir]
+    # [resources.install_dir]
 
     # Do NOT handle /var/lib, deb package will
     # [resources.data_dir]
