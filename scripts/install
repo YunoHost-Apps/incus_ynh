@@ -38,22 +38,6 @@ yunohost service add "$app" --description="Incus system container and virtual ma
 # chown $app:$app "$install_dir/"
 
 #=================================================
-# INSTALL APP
-#=================================================
-# ynh_script_progression --message="Installing app..." --weight=5
-
-# pushd $install_dir
-# some_command --build
-# popd
-
-#=================================================
-# FINALIZE APP INSTALL WITH CURL
-#=================================================
-
-# REMOVEME? ynh_script_progression --message="Finalizing installation..."
-# REMOVEME? ynh_local_curl "/INSTALL_PATH" "key1=value1" "key2=value2" "key3=value3"
-
-#=================================================
 # END OF SCRIPT
 #=================================================
 ynh_script_progression --message="Installation of $app completed" --last
