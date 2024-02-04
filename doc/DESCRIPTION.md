@@ -1,1 +1,1 @@
-This is a dummy description of this app features
+Incus, a owerful system container and virtual machine manager. It is a communautary fork of LXD.
