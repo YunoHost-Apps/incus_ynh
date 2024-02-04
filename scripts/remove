@@ -16,7 +16,7 @@ source /usr/share/yunohost/helpers
 #=================================================
 ynh_script_progression --message="Removing system configurations related to $app..."
 
-yunohost service remove "$app" --description="Incus system container and virtual machine manager" --log="/var/log/incus/incusd.log"
+yunohost service remove "$app" --log="/var/log/incus/incusd.log"
 
 ynh_remove_logrotate
 
