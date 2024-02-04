@@ -18,7 +18,6 @@ website = "https://linuxcontainers.org/incus/"
 admindoc = "https://linuxcontainers.org/incus/docs/main/"
 
 code = "https://github.com/lxc/incus"
-cpe = ""
 
 [integration]
 yunohost = '>= 11.2'
