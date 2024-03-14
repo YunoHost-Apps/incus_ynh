@@ -14,10 +14,12 @@ maintainers = ["Salamandar"]
 [upstream]
 license = "Apache-2.0"
 website = "https://linuxcontainers.org/incus/"
-
 admindoc = "https://linuxcontainers.org/incus/docs/main/"
-
 code = "https://github.com/lxc/incus"
+<<<<<<< Updated upstream
+=======
+# cpe = ""
+>>>>>>> Stashed changes
 
 [integration]
 yunohost = '>= 11.2'
@@ -25,7 +27,6 @@ architectures = ["amd64"]
 multi_instance = false
 ldap = "not_relevant"
 sso = "not_relevant"
-# FIXME: replace with an **estimate** minimum disk and RAM requirements. e.g. 20M, 400M, 1G... You may have have a look at CI results
 disk = "50M"
 ram.build = "50M"
 ram.runtime = "50M"
@@ -33,11 +34,20 @@ ram.runtime = "50M"
 [install]
 
 [resources]
+<<<<<<< Updated upstream
 
     # Do NOT handle system_user, deb package will
     # [resources.system_user]
 
     # [resources.install_dir]
+=======
+    [resources.system_user]
+
+    [resources.install_dir]
+
+    [resources.data_dir]
+    # TODO: incus actual data dir
+>>>>>>> Stashed changes
 
     # Do NOT handle /var/lib, deb package will
     # [resources.data_dir]

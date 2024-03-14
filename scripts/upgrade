@@ -1,13 +1,18 @@
 #!/bin/bash
 
 #=================================================
-# GENERIC START
-#=================================================
 # IMPORT GENERIC HELPERS
 #=================================================
 
 source _common.sh
 source /usr/share/yunohost/helpers
+
+#=================================================
+# ADD A CONFIGURATION
+#=================================================
+ynh_script_progression --message="First stopping $app service..."
+
+ynh_systemd_action --service_name="$app" --action="start" --log_path="/var/log/incus/incusd.log"
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
@@ -16,7 +21,20 @@ ynh_script_progression --message="Upgrading system configurations related to $ap
 
 yunohost service add "$app" --description="Incus system container and virtual machine manager" --log="/var/log/incus/incusd.log"
 
+# Use logrotate to manage application logfile(s)
 ynh_use_logrotate --non-append
+
+_ynh_add_dnsmasq_config
+
+_ynh_add_subuid_subgid
+
+#=================================================
+# START SYSTEMD SERVICE
+#=================================================
+ynh_script_progression --message="Starting $app's systemd service..."
+
+# Start a systemd service
+ynh_systemd_action --service_name="$app" --action="start" --log_path="/var/log/incus/incusd.log"
 
 #=================================================
 # END OF SCRIPT

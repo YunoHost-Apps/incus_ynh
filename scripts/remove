@@ -1,8 +1,6 @@
 #!/bin/bash
 
 #=================================================
-# GENERIC START
-#=================================================
 # IMPORT GENERIC HELPERS
 #=================================================
 
@@ -10,19 +8,23 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# REMOVE SYSTEM CONFIGURATIONS
-#=================================================
 # REMOVE SYSTEMD SERVICE
 #=================================================
 ynh_script_progression --message="Removing system configurations related to $app..."
 
 yunohost service remove "$app"
 
+ynh_systemd_action --service_name="$app" --action="start" --log_path="/var/log/incus/incusd.log"
+
 ynh_remove_logrotate
+
+_ynh_remove_dnsmasq_config
+
+_ynh_remove_subuid_subgid
 
 # Remove other various files specific to the app... such as :
 
-ynh_secure_remove --file="/var/log/$app"
+ynh_secure_remove --file="/var/log/incus"
 
 #=================================================
 # END OF SCRIPT

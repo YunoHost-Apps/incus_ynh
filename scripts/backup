@@ -1,8 +1,6 @@
 #!/bin/bash
 
 #=================================================
-# GENERIC START
-#=================================================
 # IMPORT GENERIC HELPERS
 #=================================================
 
@@ -17,6 +15,8 @@ ynh_print_info --message="Declaring files to be backed up..."
 
 ynh_backup --src_path="/etc/logrotate.d/$app"
 
+ynh_backup --src_path="/etc/dnsmasq.d/$app"
+
 #=================================================
 # BACKUP VARIOUS FILES
 #=================================================
@@ -24,7 +24,6 @@ ynh_backup --src_path="/etc/logrotate.d/$app"
 ynh_backup --src_path="/var/lib/incus/"
 
 ynh_backup --src_path="/var/log/incus/"
-
 
 #=================================================
 # END OF SCRIPT

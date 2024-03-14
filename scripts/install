@@ -1,41 +1,40 @@
 #!/bin/bash
 
 #=================================================
-# GENERIC START
-#=================================================
 # IMPORT GENERIC HELPERS
 #=================================================
+
 source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# INSTALL DEPENDENCIES
+# ADD A CONFIGURATION
 #=================================================
+ynh_script_progression --message="First stopping the service..."
+
+ynh_systemd_action --service_name="$app" --action="start" --log_path="/var/log/incus/incusd.log"
 
 #=================================================
 # SYSTEM CONFIGURATION
 #=================================================
 ynh_script_progression --message="Adding system configurations related to $app..."
 
+yunohost service add "$app" --description="Incus system container and virtual machine manager" --log="/var/log/incus/incusd.log"
+
 # Use logrotate to manage application logfile(s)
 ynh_use_logrotate --logfile="/var/log/incus/incusd.log"
 
-yunohost service add "$app" --description="Incus system container and virtual machine manager" --log="/var/log/incus/incusd.log"
+_ynh_add_dnsmasq_config
+
+_ynh_add_subuid_subgid
 
 #=================================================
-# APP INITIAL CONFIGURATION
+# START SYSTEMD SERVICE
 #=================================================
-# ADD A CONFIGURATION
-#=================================================
-# ynh_script_progression --message="Adding app's configuration file..."
+ynh_script_progression --message="Starting $app's systemd service..."
 
-# ynh_add_config --template="" --destination="$install_dir/"
-
-# # FIXME: this should be handled by the core in the future
-# # You may need to use chmod 600 instead of 400,
-# # for example if the app is expected to be able to modify its own config
-# chmod 400 "$install_dir/"
-# chown $app:$app "$install_dir/"
+# Start a systemd service
+ynh_systemd_action --service_name="$app" --action="start" --log_path="/var/log/incus/incusd.log"
 
 #=================================================
 # END OF SCRIPT
