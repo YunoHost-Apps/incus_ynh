@@ -16,10 +16,7 @@ license = "Apache-2.0"
 website = "https://linuxcontainers.org/incus/"
 admindoc = "https://linuxcontainers.org/incus/docs/main/"
 code = "https://github.com/lxc/incus"
-<<<<<<< Updated upstream
-=======
 # cpe = ""
->>>>>>> Stashed changes
 
 [integration]
 yunohost = '>= 11.2'
@@ -34,20 +31,10 @@ ram.runtime = "50M"
 [install]
 
 [resources]
-<<<<<<< Updated upstream
-
     # Do NOT handle system_user, deb package will
     # [resources.system_user]
 
     # [resources.install_dir]
-=======
-    [resources.system_user]
-
-    [resources.install_dir]
-
-    [resources.data_dir]
-    # TODO: incus actual data dir
->>>>>>> Stashed changes
 
     # Do NOT handle /var/lib, deb package will
     # [resources.data_dir]
