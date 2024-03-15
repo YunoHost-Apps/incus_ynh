@@ -10,12 +10,12 @@
 
 _ynh_add_dnsmasq_config() {
     ynh_add_config --template="dnsmasq.conf" --destination="/etc/dnsmasq.d/$app"
-    ynh_systemd_action --service=dnsmasq --action=restart --log_path=systemd
+    ynh_systemd_action --service_name=dnsmasq --action=restart --log_path=systemd
 }
 
 _ynh_remove_dnsmasq_config() {
     ynh_secure_remove --file="/etc/dnsmasq.d/$app"
-    ynh_systemd_action --service=dnsmasq --action=restart --log_path=systemd
+    ynh_systemd_action --service_name=dnsmasq --action=restart --log_path=systemd
 }
 
 
