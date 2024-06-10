@@ -41,6 +41,7 @@ ram.runtime = "50M"
     # dir = "/var/lib/incus"
 
     [resources.apt.extras.incus]
-    repo = "https://pkgs.zabbly.com/incus/stable bullseye main"
+    repo = "https://pkgs.zabbly.com/incus/stable __YNH_DEBIAN_VERSION__ main"
     key = "https://pkgs.zabbly.com/key.asc"
+
     packages = ["incus"]
