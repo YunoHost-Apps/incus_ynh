@@ -24,7 +24,6 @@ _ynh_remove_subuid_subgid
 
 # Remove other various files specific to the app... such as :
 
-ynh_secure_remove --file="/var/log/incus"
 
 #=================================================
 # END OF SCRIPT
