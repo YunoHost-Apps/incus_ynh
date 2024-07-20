@@ -4,8 +4,8 @@ packaging_format = 2
 
 id = "incus"
 name = "Incus"
-description.en = "A powerful system container and virtual machine manager"
-description.fr = "Un gestionnaire puissant de conteneurs système et de machines virtuelles"
+description.en = "Powerful system container and virtual machine manager"
+description.fr = "Gestionnaire puissant de conteneurs système et de machines virtuelles"
 
 version = "0.5.1~ynh1"
 
