@@ -5,7 +5,7 @@ No se debe editar a mano.
 
 # Incus para Yunohost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/incus.svg)](https://dash.yunohost.org/appci/app/incus) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/incus.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/incus.maintain.svg)
+[![Nivel de integración](https://dash.yunohost.org/integration/incus.svg)](https://ci-apps.yunohost.org/ci/apps/incus/) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/incus.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/incus.maintain.svg)
 
 [![Instalar Incus con Yunhost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=incus)
 
