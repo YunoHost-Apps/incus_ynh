@@ -7,7 +7,7 @@ name = "Incus"
 description.en = "Powerful system container and virtual machine manager"
 description.fr = "Gestionnaire puissant de conteneurs système et de machines virtuelles"
 
-version = "0.5.1~ynh1"
+version = "0.5.1~ynh2"
 
 maintainers = ["Salamandar"]
 
