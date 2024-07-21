@@ -5,7 +5,7 @@
 
 # YunoHost 上的 Incus
 
-[![集成程度](https://dash.yunohost.org/integration/incus.svg)](https://dash.yunohost.org/appci/app/incus) ![工作状态](https://ci-apps.yunohost.org/ci/badges/incus.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/incus.maintain.svg)
+[![集成程度](https://dash.yunohost.org/integration/incus.svg)](https://ci-apps.yunohost.org/ci/apps/incus/) ![工作状态](https://ci-apps.yunohost.org/ci/badges/incus.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/incus.maintain.svg)
 
 [![使用 YunoHost 安装 Incus](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=incus)
 
@@ -19,7 +19,7 @@
 Incus, a owerful system container and virtual machine manager. It is a communautary fork of LXD.
 
 
-**分发版本：** 0.5.1~ynh1
+**分发版本：** 0.5.1~ynh2
 ## 文档与资源
 
 - 官方应用网站： <https://linuxcontainers.org/incus/>

@@ -5,7 +5,7 @@ EZ editatu eskuz.
 
 # Incus YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/incus.svg)](https://dash.yunohost.org/appci/app/incus) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/incus.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/incus.maintain.svg)
+[![Integrazio maila](https://dash.yunohost.org/integration/incus.svg)](https://ci-apps.yunohost.org/ci/apps/incus/) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/incus.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/incus.maintain.svg)
 
 [![Instalatu Incus YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=incus)
 
@@ -19,7 +19,7 @@ EZ editatu eskuz.
 Incus, a owerful system container and virtual machine manager. It is a communautary fork of LXD.
 
 
-**Paketatutako bertsioa:** 0.5.1~ynh1
+**Paketatutako bertsioa:** 0.5.1~ynh2
 ## Dokumentazioa eta baliabideak
 
 - Aplikazioaren webgune ofiziala: <https://linuxcontainers.org/incus/>
