@@ -10,19 +10,19 @@ source /usr/share/yunohost/helpers
 #=================================================
 # ADD A CONFIGURATION
 #=================================================
-ynh_script_progression --message="First stopping $app service..."
+ynh_script_progression "First stopping $app service..."
 
-ynh_systemd_action --service_name="$app" --action="start" --log_path="/var/log/incus/incusd.log"
+ynh_systemctl --service="$app" --action="start" --log_path="/var/log/incus/incusd.log"
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
 #=================================================
-ynh_script_progression --message="Upgrading system configurations related to $app..."
+ynh_script_progression "Upgrading system configurations related to $app..."
 
 yunohost service add "$app" --description="Incus system container and virtual machine manager" --log="/var/log/incus/incusd.log"
 
 # Use logrotate to manage application logfile(s)
-ynh_use_logrotate --non-append
+ynh_config_add_logrotate
 
 _ynh_add_dnsmasq_config
 
@@ -32,13 +32,13 @@ _ynh_add_subuid_subgid
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
-ynh_script_progression --message="Starting $app's systemd service..."
+ynh_script_progression "Starting $app's systemd service..."
 
 # Start a systemd service
-ynh_systemd_action --service_name="$app" --action="start" --log_path="/var/log/incus/incusd.log"
+ynh_systemctl --service="$app" --action="start" --log_path="/var/log/incus/incusd.log"
 
 #=================================================
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Upgrade of $app completed" --last
+ynh_script_progression "Upgrade of $app completed"
