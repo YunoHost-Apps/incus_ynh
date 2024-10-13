@@ -22,6 +22,8 @@ _ynh_remove_dnsmasq_config
 
 _ynh_remove_subuid_subgid
 
+_ynh_firewall_remove_tweak
+
 #=================================================
 # END OF SCRIPT
 #=================================================
