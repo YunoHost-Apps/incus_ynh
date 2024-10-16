@@ -24,7 +24,7 @@ Incus, a owerful system container and virtual machine manager. It is a communaut
 
 - Website aplikasi resmi: <https://linuxcontainers.org/incus/>
 - Dokumentasi admin resmi: <https://linuxcontainers.org/incus/docs/main/>
-- Repositori kode aplikasi hulu: <https://github.com/lxc/incus>
+- Depot kode aplikasi hulu: <https://github.com/lxc/incus>
 - Gudang YunoHost: <https://apps.yunohost.org/app/incus>
 - Laporkan bug: <https://github.com/YunoHost-Apps/incus_ynh/issues>
 
