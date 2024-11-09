@@ -6,9 +6,11 @@ source /usr/share/yunohost/helpers
 #=================================================
 # ADD A CONFIGURATION
 #=================================================
-ynh_script_progression "Starting Incus..."
+ynh_script_progression "Starting and configuring Incus..."
 
 ynh_systemctl --service="$app" --action="start" --log_path="/var/log/incus/incusd.log"
+
+setup_incus
 
 #=================================================
 # SYSTEM CONFIGURATION
@@ -17,7 +19,7 @@ ynh_script_progression "Adding system configurations related to $app..."
 
 _set_incus_bridge_ip
 
-yunohost service add "$app" --description="Incus system container and virtual machine manager" --log="/var/log/incus/incusd.log"
+yunohost service add "$app" --description="Incus system container and virtual machine manager" --log="/var/log/incus/incusd.log" $(exposed_ports_if_cluster)
 
 ynh_config_add_logrotate "/var/log/incus/incusd.log"
 

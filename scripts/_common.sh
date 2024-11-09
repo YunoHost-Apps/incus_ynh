@@ -4,6 +4,32 @@
 # COMMON VARIABLES AND CUSTOM HELPERS
 #=================================================
 
+setup_incus() {
+    if [ "$cluster" -eq 1 ]; then
+        yunohost firewall allow TCP 8443
+
+        free_space=$(df --output=avail / | sed 1d)
+        btrfs_size=$(( free_space * 90 / 100 / 1024 / 1024 ))
+        incus_network=$((1 + RANDOM % 254))
+        ynh_add_config --template="incus-preseed-cluster.yml" --destination="/tmp/incus-preseed-cluster.yml"
+        incus admin init --preseed < "/tmp/incus-preseed-cluster.yml"
+        rm "/tmp/incus-preseed-cluster.yml"
+
+        incus config set core.https_address "[::]"
+    else
+        incus admin init --auto # --storage-backend=dir
+    fi
+
+    # Set a DNS tld because dnsmasq doesn't seem to like it?
+    incus network set incusbr0 dns.domain=incus
+}
+
+exposed_ports_if_cluster() {
+    if [ "$cluster" -eq 1 ]; then
+        echo "--needs_exposed_ports=8443"
+    fi
+}
+
 _set_incus_bridge_ip() {
     incusbr0_ip=$(incus network get incusbr0 ipv4.address | sed 's|/.*||')
     ynh_app_setting_set --key=incusbr0_ip --value="$incusbr0_ip"

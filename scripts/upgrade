@@ -11,7 +11,7 @@ _set_incus_bridge_ip
 #=================================================
 ynh_script_progression "Upgrading system configurations related to $app..."
 
-yunohost service add "$app" --description="Incus system container and virtual machine manager" --log="/var/log/incus/incusd.log"
+yunohost service add "$app" --description="Incus system container and virtual machine manager" --log="/var/log/incus/incusd.log" $(exposed_ports_if_cluster)
 
 ynh_config_add_logrotate
 
