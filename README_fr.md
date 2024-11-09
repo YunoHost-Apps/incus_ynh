@@ -19,7 +19,7 @@ Il NE doit PAS être modifié à la main.
 Incus est un gestionnaire puissant de conteneurs système et de machines virtuelles. C'est un fork communautaire de LXD.
 
 
-**Version incluse :** 0.5.1~ynh2
+**Version incluse :** 6.6~ynh1
 ## Documentations et ressources
 
 - Site officiel de l’app : <https://linuxcontainers.org/incus/>
