@@ -6,6 +6,8 @@ source /usr/share/yunohost/helpers
 # Maybe IP changed and the upgrade needs to reconfigure it in the settings
 _set_incus_bridge_ip
 
+ynh_app_setting_set_default --key=cluster --value=0
+
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
 #=================================================
