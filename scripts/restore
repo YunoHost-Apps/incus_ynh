@@ -3,6 +3,8 @@
 source ../settings/scripts/_common.sh
 source /usr/share/yunohost/helpers
 
+_set_incus_bridge_ip
+
 #=================================================
 # RESTORE SYSTEM CONFIGURATIONS
 #=================================================

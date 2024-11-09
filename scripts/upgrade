@@ -3,6 +3,9 @@
 source _common.sh
 source /usr/share/yunohost/helpers
 
+# Maybe IP changed and the upgrade needs to reconfigure it in the settings
+_set_incus_bridge_ip
+
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
 #=================================================

@@ -4,6 +4,12 @@
 # COMMON VARIABLES AND CUSTOM HELPERS
 #=================================================
 
+_set_incus_bridge_ip() {
+    incusbr0_ip=$(incus network get incusbr0 ipv4.address | sed 's|/.*||')
+    ynh_app_setting_set --key=incusbr0_ip --value="$incusbr0_ip"
+}
+
+
 _ynh_add_dnsmasq_config() {
     ynh_config_add --template="dnsmasq.conf" --destination="/etc/dnsmasq.d/$app"
     ynh_systemctl --service=dnsmasq --action=restart --log_path=systemd
@@ -36,12 +42,3 @@ _ynh_firewall_remove_tweak() {
     ynh_safe_rm "/etc/yunohost/hooks.d/post_iptable_rules/50-${app}"
     yunohost firewall git remote add origin git@github.com:user/repository.git
 }
-
-
-#=================================================
-# EXPERIMENTAL HELPERS
-#=================================================
-
-#=================================================
-# FUTURE OFFICIAL HELPERS
-#=================================================
