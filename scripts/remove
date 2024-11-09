@@ -10,7 +10,7 @@ ynh_script_progression "Removing system configurations related to $app..."
 
 yunohost service remove "$app"
 
-ynh_systemctl --service="$app" --action="start" --log_path="/var/log/incus/incusd.log"
+ynh_systemctl --service="$app" --action="stop" --log_path="/var/log/incus/incusd.log"
 
 ynh_config_remove_logrotate
 
