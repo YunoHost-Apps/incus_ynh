@@ -18,6 +18,10 @@ _ynh_remove_dnsmasq_config
 
 _ynh_remove_subuid_subgid
 
+ynh_config_remove_nginx
+
+ynh_safe_rm "$data_dir"
+
 #=================================================
 # END OF SCRIPT
 #=================================================

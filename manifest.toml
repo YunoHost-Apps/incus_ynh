@@ -36,6 +36,9 @@ ram.runtime = "50M"
     type = "boolean"
     default = false
 
+    [install.domain]
+    type = "domain"
+
 [resources]
     # Do NOT handle system_user, deb package will
     # [resources.system_user]
@@ -46,8 +49,17 @@ ram.runtime = "50M"
     # [resources.data_dir]
     # dir = "/var/lib/incus"
 
+    [resources.data_dir]
+
+    [resources.ports]
+    main.default = 8443
+
+    [resources.permissions]
+    main.url = "/"
+    main.allowed = "admins"
+    main.protected = true
+
     [resources.apt.extras.incus]
     repo = "https://pkgs.zabbly.com/incus/stable __YNH_DEBIAN_VERSION__ main"
     key = "https://pkgs.zabbly.com/key.asc"
-
-    packages = ["incus"]
+    packages = ["incus", "incus-ui-canonical"]
