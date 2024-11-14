@@ -18,6 +18,8 @@ ynh_restore "/etc/dnsmasq.d/$app"
 
 _ynh_add_subuid_subgid
 
+ynh_restore "/etc/nginx/conf.d/$domain.d/$app.conf"
+
 #=================================================
 # RESTORE VARIOUS FILES
 #=================================================

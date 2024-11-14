@@ -14,14 +14,15 @@ setup_incus() {
         ynh_add_config --template="incus-preseed-cluster.yml" --destination="/tmp/incus-preseed-cluster.yml"
         incus admin init --preseed < "/tmp/incus-preseed-cluster.yml"
         rm "/tmp/incus-preseed-cluster.yml"
-
-        incus config set core.https_address "[::]"
     else
         incus admin init --auto # --storage-backend=dir
     fi
 
     # Set a DNS tld because dnsmasq doesn't seem to like it?
     incus network set incusbr0 dns.domain=incus
+    incus config set core.https_address :$port
+    openssl req -x509 -newkey rsa:2048 -keyout $data_dir/client.key -nodes -out $data_dir/client.crt -subj "/CN=incus.local"
+    incus config trust add-certificate $data_dir/client.crt
 }
 
 exposed_ports_if_cluster() {
