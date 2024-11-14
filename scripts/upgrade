@@ -25,6 +25,8 @@ _ynh_config_add_nftables
 _ynh_config_remove_subuid_subgid
 _ynh_config_add_subuid_subgid
 
+ynh_config_add_nginx
+
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================

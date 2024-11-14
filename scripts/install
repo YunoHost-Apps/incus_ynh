@@ -36,6 +36,8 @@ _ynh_config_add_dnsmasq
 
 _ynh_config_add_subuid_subgid
 
+ynh_config_add_nginx
+
 #=================================================
 # END OF SCRIPT
 #=================================================
