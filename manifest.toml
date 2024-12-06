@@ -7,7 +7,7 @@ name = "Incus"
 description.en = "Powerful system container and virtual machine manager"
 description.fr = "Gestionnaire puissant de conteneurs système et de machines virtuelles"
 
-version = "6.6~ynh1"
+version = "6.6~ynh2"
 
 maintainers = ["Salamandar"]
 
@@ -32,6 +32,14 @@ ram.build = "50M"
 ram.runtime = "50M"
 
 [install]
+    [install.domain]
+    type = "domain"
+
+    [install.cluster]
+    ask.en = "Should an Incus cluster be created with this server as first node? (cluster mode is experimental)"
+    ask.fr = "Un cluster Incus doit-il être créé avec ce serveur comme premier nœud? (le mode cluster est expérimental)"
+    type = "boolean"
+    default = false
 
 [resources]
     # Do NOT handle system_user, deb package will
