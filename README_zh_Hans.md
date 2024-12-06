@@ -5,7 +5,9 @@
 
 # YunoHost 上的 Incus
 
-[![集成程度](https://dash.yunohost.org/integration/incus.svg)](https://ci-apps.yunohost.org/ci/apps/incus/) ![工作状态](https://ci-apps.yunohost.org/ci/badges/incus.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/incus.maintain.svg)
+[![集成程度](https://apps.yunohost.org/badge/integration/incus)](https://ci-apps.yunohost.org/ci/apps/incus/)
+![工作状态](https://apps.yunohost.org/badge/state/incus)
+![维护状态](https://apps.yunohost.org/badge/maintained/incus)
 
 [![使用 YunoHost 安装 Incus](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=incus)
 
