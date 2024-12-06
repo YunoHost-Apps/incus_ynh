@@ -23,8 +23,10 @@ yunohost = '>= 11.2.30'
 helpers_version = "2.1"
 architectures = ["amd64"]
 multi_instance = false
+
 ldap = "not_relevant"
 sso = "not_relevant"
+
 disk = "50M"
 ram.build = "50M"
 ram.runtime = "50M"
@@ -33,6 +35,7 @@ ram.runtime = "50M"
 
     [install.cluster]
     ask.en = "Should an Incus cluster be created with this server as first node? (cluster mode is experimental)"
+    ask.fr = "Un cluster Incus doit-il être créé avec ce serveur comme premier nœud ? (le mode cluster est expérimental)"
     type = "boolean"
     default = false
 

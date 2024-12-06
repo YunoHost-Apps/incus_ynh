@@ -1,22 +1,17 @@
 #!/bin/bash
 
-#=================================================
-# IMPORT GENERIC HELPERS
-#=================================================
-
-# Keep this path for calling _common.sh inside the execution's context of backup and restore scripts
 source ../settings/scripts/_common.sh
 source /usr/share/yunohost/helpers
 
 ynh_print_info "Declaring files to be backed up..."
 
-ynh_backup "/etc/logrotate.d/$app"
-
-ynh_backup "/etc/dnsmasq.d/$app"
-
 #=================================================
 # BACKUP VARIOUS FILES
 #=================================================
+
+ynh_backup "/etc/logrotate.d/$app"
+
+ynh_backup "/etc/dnsmasq.d/$app"
 
 ynh_backup "/var/lib/incus/"
 
