@@ -11,7 +11,7 @@ setup_incus() {
         free_space=$(df --output=avail / | sed 1d)
         btrfs_size=$(( free_space * 90 / 100 / 1024 / 1024 ))
         incus_network=$((1 + RANDOM % 254))
-        ynh_add_config --template="incus-preseed-cluster.yml" --destination="/tmp/incus-preseed-cluster.yml"
+        ynh_config_add --template="incus-preseed-cluster.yml" --destination="/tmp/incus-preseed-cluster.yml"
         incus admin init --preseed < "/tmp/incus-preseed-cluster.yml"
         rm "/tmp/incus-preseed-cluster.yml"
 
