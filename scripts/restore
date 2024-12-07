@@ -23,6 +23,7 @@ _ynh_add_subuid_subgid
 #=================================================
 
 ynh_restore "/var/lib/incus"
+
 ynh_restore "/var/log/incus"
 
 #=================================================
