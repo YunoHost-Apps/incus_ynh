@@ -1,7 +1,5 @@
 config:
-  cluster.https_address: __DOMAIN__:8443
   core.https_address: __DOMAIN__:8443
-  core.trust_password: __YUNO_PWD__
 networks:
 - config:
     ipv4.address: 192.168.__INCUS_NETWORK__.1/24
