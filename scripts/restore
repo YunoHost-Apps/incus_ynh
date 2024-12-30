@@ -1,9 +1,12 @@
 #!/bin/bash
 
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
+
+# Keep this path for calling _common.sh inside the execution's context of backup and restore scripts
 source ../settings/scripts/_common.sh
 source /usr/share/yunohost/helpers
-
-_set_incus_bridge_ip
 
 #=================================================
 # RESTORE SYSTEM CONFIGURATIONS
@@ -14,17 +17,25 @@ yunohost service add "$app" --description="Incus system container and virtual ma
 
 ynh_restore "/etc/logrotate.d/$app"
 
-ynh_restore "/etc/dnsmasq.d/$app"
-
-_ynh_add_subuid_subgid
-
 #=================================================
 # RESTORE VARIOUS FILES
 #=================================================
 
-ynh_restore "/var/lib/incus"
+_set_incus_bridge_ip
+ynh_restore "/etc/dnsmasq.d/$app"
+systemctl restart dnsmasq
+
+_ynh_add_subuid_subgid
 
 ynh_restore "/var/log/incus"
+
+#=================================================
+# RELOAD NGINX AND PHP-FPM OR THE APP SERVICE
+#=================================================
+ynh_script_progression "Reloading NGINX web server and $app's service..."
+
+### Typically you only have either $app or PHP-FPM but not both at the same time...
+ynh_systemctl --service="$app" --action="restart" --log_path="/var/log/incus/incusd.log"
 
 #=================================================
 # END OF SCRIPT

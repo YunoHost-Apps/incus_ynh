@@ -1,33 +1,68 @@
 #!/bin/bash
 
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
+
 source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# ADD A CONFIGURATION
+# INITIALIZE AND STORE SETTINGS
 #=================================================
-ynh_script_progression "Starting and configuring Incus..."
+
+#=================================================
+# APP INITIAL CONFIGURATION
+#=================================================
+ynh_script_progression "Adding $app's configuration files..."
+
+_ynh_add_dnsmasq_minimal_config
 
 ynh_systemctl --service="$app" --action="start" --log_path="/var/log/incus/incusd.log"
 
-setup_incus
+if [ "$cluster" -eq 1 ]; then
+    yunohost firewall allow TCP 8443
+
+    free_space=$(df --output=avail / | sed 1d)
+    btrfs_size=$(( free_space * 90 / 100 / 1024 / 1024 ))
+    incus_network=$((1 + RANDOM % 254))
+    ynh_config_add --template="incus-preseed-cluster.yml" --destination="/tmp/incus-preseed-cluster.yml"
+    incus admin init --preseed < "/tmp/incus-preseed-cluster.yml"
+    ynh_safe_rm "/tmp/incus-preseed-cluster.yml"
+
+    incus config set core.https_address "[::]"
+else
+    incus admin init --auto # --storage-backend=dir
+fi
+
+# Set a DNS tld because dnsmasq doesn't seem to like it?
+incus network set incusbr0 dns.domain=incus
 
 #=================================================
 # SYSTEM CONFIGURATION
 #=================================================
 ynh_script_progression "Adding system configurations related to $app..."
 
-_set_incus_bridge_ip
-
 yunohost service add "$app" --description="Incus system container and virtual machine manager" --log="/var/log/incus/incusd.log" $(exposed_ports_if_cluster)
 
+# Use logrotate to manage application logfile(s)
 ynh_config_add_logrotate "/var/log/incus/incusd.log"
 
+_set_incus_bridge_ip
 _ynh_add_dnsmasq_config
 
 _ynh_add_subuid_subgid
 
 #=================================================
+# START SYSTEMD SERVICE
+#=================================================
+ynh_script_progression "Starting $app's systemd service..."
+
+# Start a systemd service
+ynh_systemctl --service="$app" --action="restart" --log_path="/var/log/incus/incusd.log"
+
+#=================================================
 # END OF SCRIPT
 #=================================================
+
 ynh_script_progression "Installation of $app completed"
