@@ -1,7 +1,18 @@
 #!/bin/bash
 
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
+
 source _common.sh
 source /usr/share/yunohost/helpers
+
+#=================================================
+# STOP SYSTEMD SERVICE
+#=================================================
+ynh_script_progression "Stopping $app's systemd service..."
+
+ynh_systemctl --service="$app" --action="stop"
 
 #=================================================
 # ENSURE DOWNWARD COMPATIBILITY
@@ -17,7 +28,7 @@ ynh_script_progression "Upgrading system configurations related to $app..."
 
 yunohost service add "$app" --description="Incus system container and virtual machine manager" --log="/var/log/incus/incusd.log"
 
-ynh_config_add_logrotate
+ynh_config_add_logrotate "/var/log/incus/incusd.log"
 
 # Maybe IP changed and the upgrade needs to reconfigure it in the settings
 _set_incus_bridge_ip

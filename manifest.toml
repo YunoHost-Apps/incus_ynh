@@ -50,8 +50,17 @@ ram.runtime = "50M"
     # [resources.data_dir]
     # dir = "/var/lib/incus"
 
+    [resources.apt]
+    packages = [
+        # For lvm2
+        "lvm2",
+        "thin-provisioning-tools",
+
+        # For btrfs
+        "btrfs-progs"
+    ]
+
     [resources.apt.extras.incus]
     repo = "https://pkgs.zabbly.com/incus/stable __YNH_DEBIAN_VERSION__ main"
     key = "https://pkgs.zabbly.com/key.asc"
-
     packages = ["incus"]

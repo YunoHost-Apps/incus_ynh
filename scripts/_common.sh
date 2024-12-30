@@ -24,6 +24,11 @@ setup_incus() {
     incus network set incusbr0 dns.domain=incus
 }
 
+exposed_ports_if_cluster() {
+    if [ "$cluster" -eq 1 ]; then
+        echo "--needs_exposed_ports=8443"
+    fi
+}
 
 _set_incus_bridge_ip() {
     incusbr0_ip=$(incus network get incusbr0 ipv4.address | sed 's|/.*||')
