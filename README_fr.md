@@ -22,6 +22,8 @@ Incus est un gestionnaire puissant de conteneurs système et de machines virtuel
 
 
 **Version incluse :** 6.6~ynh1
+
+**Démo :** <https://linuxcontainers.org/incus/try-it/>
 ## Documentations et ressources
 
 - Site officiel de l’app : <https://linuxcontainers.org/incus/>

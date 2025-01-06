@@ -22,6 +22,8 @@ Incus, a owerful system container and virtual machine manager. It is a communaut
 
 
 **Versión proporcionada:** 6.6~ynh1
+
+**Demo:** <https://linuxcontainers.org/incus/try-it/>
 ## Documentación e recursos
 
 - Web oficial da app: <https://linuxcontainers.org/incus/>
