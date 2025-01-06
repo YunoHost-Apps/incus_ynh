@@ -21,7 +21,7 @@
 Incus, a owerful system container and virtual machine manager. It is a communautary fork of LXD.
 
 
-**分发版本：** 6.6~ynh1
+**分发版本：** 6.6~ynh2
 
 **演示：** <https://linuxcontainers.org/incus/try-it/>
 ## 文档与资源

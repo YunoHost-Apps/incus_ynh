@@ -1,15 +1,20 @@
 #!/bin/bash
 
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
+
 source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# REMOVE SYSTEMD SERVICE
+# REMOVE SYSTEM CONFIGURATIONS
 #=================================================
 ynh_script_progression "Removing system configurations related to $app..."
 
-yunohost service remove "$app"
-
+if ynh_hide_warnings yunohost service status "$app" >/dev/null; then
+    yunohost service remove "$app"
+fi
 ynh_systemctl --service="$app" --action="stop" --log_path="/var/log/incus/incusd.log"
 
 ynh_config_remove_logrotate
@@ -17,6 +22,16 @@ ynh_config_remove_logrotate
 _ynh_remove_dnsmasq_config
 
 _ynh_remove_subuid_subgid
+
+#=================================================
+# REMOVE CONTAINERS
+#=================================================
+
+# Remove the data directory if --purge option is used
+if [ "${YNH_APP_PURGE:-0}" -eq 1 ]; then
+	ynh_script_progression "Removing containers..."
+	ynh_safe_rm "/var/lib/incus"
+fi
 
 #=================================================
 # END OF SCRIPT
