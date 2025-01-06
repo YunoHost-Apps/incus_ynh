@@ -3,9 +3,6 @@
 source _common.sh
 source /usr/share/yunohost/helpers
 
-# Maybe IP changed and the upgrade needs to reconfigure it in the settings
-_set_incus_bridge_ip
-
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
 #=================================================
@@ -15,6 +12,8 @@ yunohost service add "$app" --description="Incus system container and virtual ma
 
 ynh_config_add_logrotate
 
+# Maybe IP changed and the upgrade needs to reconfigure it in the settings
+_set_incus_bridge_ip
 _ynh_add_dnsmasq_config
 
 _ynh_remove_subuid_subgid
