@@ -33,16 +33,9 @@ ram.runtime = "50M"
 
 [install]
 
-    [install.cluster]
-    ask.en = "Should an Incus cluster be created with this server as first node? (cluster mode is experimental)"
-    ask.fr = "Un cluster Incus doit-il être créé avec ce serveur comme premier nœud ? (le mode cluster est expérimental)"
-    type = "boolean"
-    default = false
-
 [resources]
     # Do NOT handle system_user, deb package will
     # [resources.system_user]
-
     # [resources.install_dir]
 
     # Do NOT handle /var/lib, deb package will

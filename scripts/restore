@@ -10,7 +10,7 @@ _set_incus_bridge_ip
 #=================================================
 ynh_script_progression "Restoring system configurations related to $app..."
 
-yunohost service add "$app" --description="Incus system container and virtual machine manager" --log="/var/log/incus/incusd.log" $(exposed_ports_if_cluster)
+yunohost service add "$app" --description="Incus system container and virtual machine manager" --log="/var/log/incus/incusd.log"
 
 ynh_restore "/etc/logrotate.d/$app"
 
