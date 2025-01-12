@@ -5,7 +5,9 @@ Ini TIDAK boleh diedit dengan tangan.
 
 # Incus untuk YunoHost
 
-[![Tingkat integrasi](https://dash.yunohost.org/integration/incus.svg)](https://ci-apps.yunohost.org/ci/apps/incus/) ![Status kerja](https://ci-apps.yunohost.org/ci/badges/incus.status.svg) ![Status pemeliharaan](https://ci-apps.yunohost.org/ci/badges/incus.maintain.svg)
+[![Tingkat integrasi](https://apps.yunohost.org/badge/integration/incus)](https://ci-apps.yunohost.org/ci/apps/incus/)
+![Status kerja](https://apps.yunohost.org/badge/state/incus)
+![Status pemeliharaan](https://apps.yunohost.org/badge/maintained/incus)
 
 [![Pasang Incus dengan YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=incus)
 
@@ -20,6 +22,8 @@ Incus, a owerful system container and virtual machine manager. It is a communaut
 
 
 **Versi terkirim:** 6.6~ynh1
+
+**Demo:** <https://linuxcontainers.org/incus/try-it/>
 ## Dokumentasi dan sumber daya
 
 - Website aplikasi resmi: <https://linuxcontainers.org/incus/>

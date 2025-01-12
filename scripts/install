@@ -4,6 +4,14 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
+# DNSMASQ CONFIGURATION
+#=================================================
+ynh_script_progression "Configuring Dnsmasq before starting Incus..."
+
+incusbr0_ip=0.0.0.0
+_ynh_add_dnsmasq_config
+
+#=================================================
 # ADD A CONFIGURATION
 #=================================================
 ynh_script_progression "Starting and configuring Incus..."
@@ -17,12 +25,12 @@ setup_incus
 #=================================================
 ynh_script_progression "Adding system configurations related to $app..."
 
-_set_incus_bridge_ip
-
-yunohost service add "$app" --description="Incus system container and virtual machine manager" --log="/var/log/incus/incusd.log" $(exposed_ports_if_cluster)
+yunohost service add "$app" --description="Incus system container and virtual machine manager" --log="/var/log/incus/incusd.log"
 
 ynh_config_add_logrotate "/var/log/incus/incusd.log"
 
+# Dnsmasq is configured again with the proper incusbr0_ip
+_set_incus_bridge_ip
 _ynh_add_dnsmasq_config
 
 _ynh_add_subuid_subgid

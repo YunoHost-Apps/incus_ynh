@@ -5,7 +5,9 @@ Hij mag NIET handmatig aangepast worden.
 
 # Incus voor Yunohost
 
-[![Integratieniveau](https://dash.yunohost.org/integration/incus.svg)](https://ci-apps.yunohost.org/ci/apps/incus/) ![Mate van functioneren](https://ci-apps.yunohost.org/ci/badges/incus.status.svg) ![Onderhoudsstatus](https://ci-apps.yunohost.org/ci/badges/incus.maintain.svg)
+[![Integratieniveau](https://apps.yunohost.org/badge/integration/incus)](https://ci-apps.yunohost.org/ci/apps/incus/)
+![Mate van functioneren](https://apps.yunohost.org/badge/state/incus)
+![Onderhoudsstatus](https://apps.yunohost.org/badge/maintained/incus)
 
 [![Incus met Yunohost installeren](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=incus)
 
@@ -20,6 +22,8 @@ Incus, a owerful system container and virtual machine manager. It is a communaut
 
 
 **Geleverde versie:** 6.6~ynh1
+
+**Demo:** <https://linuxcontainers.org/incus/try-it/>
 ## Documentatie en bronnen
 
 - Officiele website van de app: <https://linuxcontainers.org/incus/>

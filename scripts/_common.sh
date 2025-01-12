@@ -5,18 +5,7 @@
 #=================================================
 
 setup_incus() {
-    if [ "$cluster" -eq 1 ]; then
-        yunohost firewall allow TCP 8443
-
-        free_space=$(df --output=avail / | sed 1d)
-        btrfs_size=$(( free_space * 90 / 100 / 1024 / 1024 ))
-        incus_network=$((1 + RANDOM % 254))
-        ynh_add_config --template="incus-preseed-cluster.yml" --destination="/tmp/incus-preseed-cluster.yml"
-        incus admin init --preseed < "/tmp/incus-preseed-cluster.yml"
-        rm "/tmp/incus-preseed-cluster.yml"
-    else
-        incus admin init --auto # --storage-backend=dir
-    fi
+    incus admin init --auto # --storage-backend=dir
 
     # Set a DNS tld because dnsmasq doesn't seem to like it?
     incus network set incusbr0 dns.domain=incus
@@ -25,11 +14,6 @@ setup_incus() {
     incus config trust add-certificate $data_dir/client.crt
 }
 
-exposed_ports_if_cluster() {
-    if [ "$cluster" -eq 1 ]; then
-        echo "--needs_exposed_ports=8443"
-    fi
-}
 
 _set_incus_bridge_ip() {
     incusbr0_ip=$(incus network get incusbr0 ipv4.address | sed 's|/.*||')

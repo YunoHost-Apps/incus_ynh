@@ -3,18 +3,20 @@
 source ../settings/scripts/_common.sh
 source /usr/share/yunohost/helpers
 
-_set_incus_bridge_ip
-
 #=================================================
 # RESTORE SYSTEM CONFIGURATIONS
 #=================================================
 ynh_script_progression "Restoring system configurations related to $app..."
 
-yunohost service add "$app" --description="Incus system container and virtual machine manager" --log="/var/log/incus/incusd.log" $(exposed_ports_if_cluster)
+yunohost service add "$app" --description="Incus system container and virtual machine manager" --log="/var/log/incus/incusd.log"
 
 ynh_restore "/etc/logrotate.d/$app"
 
 ynh_restore "/etc/dnsmasq.d/$app"
+
+# Ensure the real bridge IP is configured (overwrite the restored file)
+_set_incus_bridge_ip
+_ynh_add_dnsmasq_config
 
 _ynh_add_subuid_subgid
 
@@ -25,6 +27,7 @@ ynh_restore "/etc/nginx/conf.d/$domain.d/$app.conf"
 #=================================================
 
 ynh_restore "/var/lib/incus"
+
 ynh_restore "/var/log/incus"
 
 #=================================================
