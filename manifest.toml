@@ -45,6 +45,8 @@ ram.runtime = "50M"
     [resources.apt]
     packages = []
 
+    [resources.system_user]
+
     [resources.data_dir]
 
     [resources.ports]
