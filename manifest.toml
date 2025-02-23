@@ -45,6 +45,7 @@ ram.runtime = "50M"
     # [resources.data_dir]
     # dir = "/var/lib/incus"
 
+    [resources.system_user]
     [resources.data_dir]
 
     [resources.ports]
