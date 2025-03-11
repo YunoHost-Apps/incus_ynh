@@ -13,6 +13,8 @@ ynh_backup "/etc/logrotate.d/$app"
 
 ynh_backup "/etc/dnsmasq.d/$app"
 
+ynh_backup "/etc/nginx/conf.d/$domain.d/$app.conf"
+
 ynh_backup "/var/lib/incus/"
 
 ynh_backup "/var/log/incus/"

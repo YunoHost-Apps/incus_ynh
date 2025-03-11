@@ -19,6 +19,8 @@ _ynh_add_dnsmasq_config
 _ynh_remove_subuid_subgid
 _ynh_add_subuid_subgid
 
+ynh_config_add_nginx
+
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
