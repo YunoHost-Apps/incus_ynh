@@ -26,7 +26,7 @@ ynh_app_setting_set_default --key=cluster --value=0
 #=================================================
 ynh_script_progression "Upgrading system configurations related to $app..."
 
-yunohost service add "$app" --description="Incus system container and virtual machine manager" --log="/var/log/incus/incusd.log"
+yunohost service add "$app" --description="Incus system container and virtual machine manager" --log="/var/log/incus/incusd.log" $(exposed_ports_if_cluster)
 
 ynh_config_add_logrotate "/var/log/incus/incusd.log"
 
