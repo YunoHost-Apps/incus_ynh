@@ -34,6 +34,9 @@ if [ "${YNH_APP_PURGE:-0}" -eq 1 ]; then
 	ynh_safe_rm "/var/lib/incus"
 fi
 
+# Remove virtual interface
+ip link delete incusbr0
+
 #=================================================
 # END OF SCRIPT
 #=================================================

@@ -36,7 +36,7 @@ ynh_restore "/var/log/incus"
 #=================================================
 ynh_script_progression "Reloading $app's service..."
 
-ynh_systemctl --service="$app" --action="restart" --log_path="/var/log/incus/incusd.log"
+ynh_systemctl --service="$app" --action="restart" --wait_until="Started incus.service" --log_path="systemd"
 
 #=================================================
 # END OF SCRIPT

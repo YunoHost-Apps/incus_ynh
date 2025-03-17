@@ -20,7 +20,7 @@ _ynh_add_dnsmasq_config
 #=================================================
 ynh_script_progression "Adding $app's configuration files..."
 
-ynh_systemctl --service="$app" --action="start" --log_path="/var/log/incus/incusd.log"
+ynh_systemctl --service="$app" --action="start" --wait_until="Started incus.service" --log_path="systemd"
 
 setup_incus
 
@@ -45,7 +45,7 @@ _ynh_add_subuid_subgid
 ynh_script_progression "Starting $app's systemd service..."
 
 # Start a systemd service
-ynh_systemctl --service="$app" --action="restart" --log_path="/var/log/incus/incusd.log"
+ynh_systemctl --service="$app" --action="restart" --wait_until="Started incus.service" --log_path="systemd"
 
 #=================================================
 # END OF SCRIPT
