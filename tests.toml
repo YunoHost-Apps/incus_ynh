@@ -3,3 +3,19 @@
 test_format = 1.0
 
 [default]
+
+    # ------------
+    # Tests to run
+    # ------------
+
+    # -------------------------------
+    # Default args to use for install
+    # -------------------------------
+
+    args.cluster = false
+
+    # -------------------------------
+    # Commits to test upgrade from
+    # -------------------------------
+
+    test_upgrade_from.8eb82c67ce789098fe86efad4d0c32f0c174378b.name = "Upgrade from 6.6~ynh1"

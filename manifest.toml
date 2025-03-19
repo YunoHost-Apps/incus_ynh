@@ -7,7 +7,7 @@ name = "Incus"
 description.en = "Powerful system container and virtual machine manager"
 description.fr = "Gestionnaire puissant de conteneurs système et de machines virtuelles"
 
-version = "6.6~ynh1"
+version = "6.6~ynh2"
 
 maintainers = ["Salamandar"]
 
@@ -25,6 +25,7 @@ architectures = ["amd64"]
 multi_instance = false
 
 ldap = "not_relevant"
+
 sso = "not_relevant"
 
 disk = "50M"
@@ -32,6 +33,14 @@ ram.build = "50M"
 ram.runtime = "50M"
 
 [install]
+    [install.domain]
+    type = "domain"
+
+    [install.cluster]
+    ask.en = "Should an Incus cluster be created with this server as first node? (cluster mode is experimental)"
+    ask.fr = "Un cluster Incus doit-il être créé avec ce serveur comme premier nœud? (le mode cluster est expérimental)"
+    type = "boolean"
+    default = false
 
 [resources]
     # Do NOT handle system_user, deb package will
@@ -42,8 +51,17 @@ ram.runtime = "50M"
     # [resources.data_dir]
     # dir = "/var/lib/incus"
 
+    [resources.apt]
+    packages = [
+        # For lvm2
+        "lvm2",
+        "thin-provisioning-tools",
+
+        # For btrfs
+        "btrfs-progs"
+    ]
+
     [resources.apt.extras.incus]
     repo = "https://pkgs.zabbly.com/incus/stable __YNH_DEBIAN_VERSION__ main"
     key = "https://pkgs.zabbly.com/key.asc"
-
     packages = ["incus"]
