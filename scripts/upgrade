@@ -3,6 +3,11 @@
 source _common.sh
 source /usr/share/yunohost/helpers
 
+# Remove legacy hook
+if [[ -f "/etc/yunohost/hooks.d/post_iptable_rules/50-${app}" ]]; then
+    rm "/etc/yunohost/hooks.d/post_iptable_rules/50-${app}"
+fi
+
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
 #=================================================
