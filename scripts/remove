@@ -14,9 +14,9 @@ ynh_systemctl --service="$app" --action="stop" --log_path="/var/log/incus/incusd
 
 ynh_config_remove_logrotate
 
-_ynh_remove_dnsmasq_config
-
-_ynh_remove_subuid_subgid
+_ynh_config_remove_dnsmasq
+_ynh_config_remove_nftables
+_ynh_config_remove_subuid_subgid
 
 #=================================================
 # END OF SCRIPT

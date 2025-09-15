@@ -16,9 +16,10 @@ ynh_restore "/etc/dnsmasq.d/$app"
 
 # Ensure the real bridge IP is configured (overwrite the restored file)
 _set_incus_bridge_ip
-_ynh_add_dnsmasq_config
+_ynh_config_add_dnsmasq
+_ynh_config_add_nftables
 
-_ynh_add_subuid_subgid
+_ynh_config_add_subuid_subgid
 
 #=================================================
 # RESTORE VARIOUS FILES

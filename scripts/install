@@ -6,10 +6,11 @@ source /usr/share/yunohost/helpers
 #=================================================
 # DNSMASQ CONFIGURATION
 #=================================================
-ynh_script_progression "Configuring Dnsmasq before starting Incus..."
+ynh_script_progression "Configuring Dnsmasq and NFTables before starting Incus..."
 
 incusbr0_ip=0.0.0.0
-_ynh_add_dnsmasq_config
+_ynh_config_add_dnsmasq
+_ynh_config_add_nftables
 
 #=================================================
 # ADD A CONFIGURATION
@@ -31,9 +32,9 @@ ynh_config_add_logrotate "/var/log/incus/incusd.log"
 
 # Dnsmasq is configured again with the proper incusbr0_ip
 _set_incus_bridge_ip
-_ynh_add_dnsmasq_config
+_ynh_config_add_dnsmasq
 
-_ynh_add_subuid_subgid
+_ynh_config_add_subuid_subgid
 
 #=================================================
 # END OF SCRIPT
