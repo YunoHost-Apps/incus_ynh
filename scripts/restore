@@ -21,6 +21,8 @@ _ynh_config_add_nftables
 
 _ynh_config_add_subuid_subgid
 
+ynh_restore "/etc/nginx/conf.d/$domain.d/$app.conf"
+
 #=================================================
 # RESTORE VARIOUS FILES
 #=================================================

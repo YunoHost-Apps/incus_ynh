@@ -10,6 +10,13 @@ ynh_script_progression "Removing system configurations related to $app..."
 
 yunohost service remove "$app"
 
+network_interfaces_to_remove=$(incus network list -f json | jq '.[] | select(.managed == true) | .name' | tr -d '"')
+
+for network in $network_interfaces_to_remove; do
+    ip link delete "$network"
+done
+
+ynh_systemctl --service="$app.socket" --action="stop"
 ynh_systemctl --service="$app" --action="stop" --log_path="/var/log/incus/incusd.log"
 
 ynh_config_remove_logrotate
@@ -17,6 +24,13 @@ ynh_config_remove_logrotate
 _ynh_config_remove_dnsmasq
 _ynh_config_remove_nftables
 _ynh_config_remove_subuid_subgid
+
+# Kill dnsmasq and all other process started by incus
+kill $(pgrep -u $app)
+
+ynh_config_remove_nginx
+
+ynh_safe_rm "$data_dir"
 
 #=================================================
 # END OF SCRIPT
