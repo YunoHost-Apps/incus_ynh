@@ -7,6 +7,11 @@
 source _common.sh
 source /usr/share/yunohost/helpers
 
+# Remove legacy hook
+if [[ -f "/etc/yunohost/hooks.d/post_iptable_rules/50-${app}" ]]; then
+    rm "/etc/yunohost/hooks.d/post_iptable_rules/50-${app}"
+fi
+
 #=================================================
 # STOP SYSTEMD SERVICE
 #=================================================
@@ -33,10 +38,11 @@ ynh_config_add_logrotate "/var/log/incus/incusd.log"
 
 # Maybe IP changed and the upgrade needs to reconfigure it in the settings
 _set_incus_bridge_ip
-_ynh_add_dnsmasq_config
+_ynh_config_add_dnsmasq
+_ynh_config_add_nftables
 
-_ynh_remove_subuid_subgid
-_ynh_add_subuid_subgid
+_ynh_config_remove_subuid_subgid
+_ynh_config_add_subuid_subgid
 
 #=================================================
 # START SYSTEMD SERVICE
