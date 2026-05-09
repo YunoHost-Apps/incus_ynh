@@ -12,7 +12,7 @@ Powerful system container and virtual machine manager
 
 [![🌐 Official app website](https://img.shields.io/badge/Official_app_website-darkgreen?style=for-the-badge)](https://linuxcontainers.org/incus/)
 [![App Demo](https://img.shields.io/badge/App_Demo-blue?style=for-the-badge)](https://linuxcontainers.org/incus/try-it/)
-[![Version: 6.18~ynh1](https://img.shields.io/badge/Version-6.18~ynh1-rgb(18,138,11)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/incus/)
+[![Version: 6.18~ynh2](https://img.shields.io/badge/Version-6.18~ynh2-rgb(18,138,11)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/incus/)
 
 <div align="center">
 <a href="https://apps.yunohost.org/app/incus"><img height="100px" src="https://github.com/YunoHost/yunohost-artwork/raw/refs/heads/main/badges/neopossum-badges/badge_more_info_on_the_appstore.svg"/></a>
@@ -27,14 +27,10 @@ Powerful system container and virtual machine manager
 
 Pull request are welcome and should target the [`testing` branch](https://github.com/YunoHost-Apps/incus_ynh/tree/testing).
 
-<<<<<<< HEAD
-**Shipped version:** 6.6~ynh2
-=======
 The `testing` branch can be tested using:
 ```
 # fresh install:
 sudo yunohost app install https://github.com/YunoHost-Apps/incus_ynh/tree/testing
->>>>>>> origin/testing
 
 # upgrade an existing install:
 sudo yunohost app upgrade incus -u https://github.com/YunoHost-Apps/incus_ynh/tree/testing
